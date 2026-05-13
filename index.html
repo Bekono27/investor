@@ -1,0 +1,1417 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>DigiLend Investor Teaser 2026</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;600;700&family=DM+Serif+Display:ital@0;1&display=swap" rel="stylesheet">
+<style>
+/* ── RESET & BASE ─────────────────────────────────────────────────────────── */
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+:root {
+  /* DigiLend logo exact colors */
+  --navy:    #252834;
+  --green:   #1A7A4A;
+  --ocean:   #0E7099;
+  --teal:    #0086B3;
+  --ltgreen: #4AB87A;
+  --ltteal:  #3BAAD0;
+
+  /* Supporting */
+  --white:   #FFFFFF;
+  --offwht:  #F4F7F9;
+  --gray:    #8AABB8;
+  --midgray: #5A7585;
+  --border:  rgba(255,255,255,0.08);
+  --slide-w: 100vw;
+  --slide-h: 100vh;
+}
+
+html, body {
+  width: 100%; height: 100%;
+  overflow: hidden;
+  font-family: 'DM Sans', sans-serif;
+  background: var(--navy);
+  color: var(--white);
+  cursor: default;
+}
+
+/* ── SLIDE SYSTEM ─────────────────────────────────────────────────────────── */
+.deck {
+  position: relative;
+  width: 100vw; height: 100vh;
+}
+
+.slide {
+  position: absolute;
+  inset: 0;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.6s cubic-bezier(0.4, 0, 0.2, 1),
+              transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+  transform: translateY(20px);
+  overflow: hidden;
+}
+
+.slide.active {
+  opacity: 1;
+  pointer-events: all;
+  transform: translateY(0);
+}
+
+.slide.exit {
+  opacity: 0;
+  transform: translateY(-20px);
+}
+
+/* ── NAV ──────────────────────────────────────────────────────────────────── */
+.nav {
+  position: fixed;
+  bottom: 36px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  background: rgba(37, 40, 52, 0.9);
+  border: 1px solid var(--border);
+  backdrop-filter: blur(20px);
+  padding: 10px 18px;
+  border-radius: 100px;
+}
+
+.nav-dot {
+  width: 8px; height: 8px;
+  border-radius: 50%;
+  background: rgba(255,255,255,0.2);
+  cursor: pointer;
+  transition: all 0.3s;
+  border: none;
+}
+
+.nav-dot.active { background: var(--ltgreen); width: 24px; border-radius: 4px; }
+.nav-dot:hover { background: rgba(255,255,255,0.5); }
+
+.nav-btn {
+  background: none;
+  border: 1px solid var(--border);
+  color: var(--gray);
+  width: 32px; height: 32px;
+  border-radius: 50%;
+  cursor: pointer;
+  font-size: 14px;
+  display: flex; align-items: center; justify-content: center;
+  transition: all 0.2s;
+}
+.nav-btn:hover { border-color: var(--ltgreen); color: var(--white); }
+
+.slide-count {
+  font-size: 11px;
+  color: var(--gray);
+  font-weight: 500;
+  letter-spacing: 0.5px;
+  min-width: 32px;
+  text-align: center;
+}
+
+/* ── LOGO BAR (every slide) ───────────────────────────────────────────────── */
+.logo-bar {
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 64px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 48px;
+  z-index: 10;
+}
+
+.logo-wrap {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.logo-img {
+  width: 40px; height: 40px;
+  object-fit: contain;
+}
+
+.logo-text {
+  font-family: 'DM Serif Display', serif;
+  font-size: 22px;
+  letter-spacing: -0.3px;
+}
+
+.logo-text .digi { color: var(--navy); }
+.logo-text .lend { color: var(--navy); }
+
+.slide-label {
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 2.5px;
+  text-transform: uppercase;
+  color: var(--ltteal);
+}
+
+.confidential {
+  font-size: 9px;
+  font-weight: 600;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: var(--midgray);
+}
+
+/* ── THREE-COLOR ACCENT ───────────────────────────────────────────────────── */
+.color-bar {
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 3px;
+  background: linear-gradient(90deg, var(--green) 0%, var(--ocean) 50%, var(--teal) 100%);
+  z-index: 20;
+}
+
+/* ═══════════════════════════════════════════════════════════════════════════
+   SLIDE 1 — COVER
+═══════════════════════════════════════════════════════════════════════════ */
+#s1 { background: var(--navy); }
+
+.s1-layout {
+  display: grid;
+  grid-template-columns: 42% 58%;
+  height: 100%;
+}
+
+.s1-left {
+  background: var(--green);
+  padding: 80px 52px 52px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  position: relative;
+  overflow: hidden;
+}
+
+.s1-left::before {
+  content: '';
+  position: absolute;
+  bottom: -80px; left: -80px;
+  width: 320px; height: 320px;
+  border-radius: 50%;
+  border: 40px solid rgba(255,255,255,0.05);
+  pointer-events: none;
+}
+
+.s1-left::after {
+  content: '';
+  position: absolute;
+  top: -40px; right: -60px;
+  width: 200px; height: 200px;
+  border-radius: 50%;
+  border: 25px solid rgba(255,255,255,0.04);
+  pointer-events: none;
+}
+
+/* Teal divider */
+.s1-divider {
+  position: absolute;
+  top: 0; right: 0;
+  width: 5px; height: 100%;
+  background: linear-gradient(180deg, var(--ocean), var(--teal));
+}
+
+.s1-tag {
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 2.5px;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.6);
+  margin-bottom: 24px;
+}
+
+.s1-company {
+  font-family: 'DM Serif Display', serif;
+  font-size: clamp(42px, 5.5vw, 68px);
+  line-height: 1.0;
+  color: var(--white);
+  margin-bottom: 20px;
+}
+
+.s1-tagline {
+  font-size: 14px;
+  font-weight: 400;
+  color: rgba(255,255,255,0.7);
+  line-height: 1.6;
+  max-width: 320px;
+}
+
+.s1-meta {
+  font-size: 11px;
+  color: rgba(255,255,255,0.45);
+  letter-spacing: 0.5px;
+}
+
+.s1-right {
+  padding: 80px 64px 52px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.s1-raising-label {
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  color: var(--gray);
+  margin-bottom: 12px;
+}
+
+.s1-amount {
+  font-family: 'DM Serif Display', serif;
+  font-size: clamp(52px, 7vw, 88px);
+  line-height: 1;
+  color: var(--white);
+  margin-bottom: 8px;
+  animation: countUp 1s ease-out;
+}
+
+@keyframes countUp {
+  from { opacity: 0; transform: translateY(30px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.s1-round {
+  font-size: 16px;
+  color: var(--ltgreen);
+  font-weight: 500;
+  margin-bottom: 48px;
+}
+
+.s1-divline {
+  height: 1px;
+  background: linear-gradient(90deg, var(--green), var(--ocean), transparent);
+  margin-bottom: 40px;
+}
+
+.s1-stats {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1px;
+  background: rgba(255,255,255,0.06);
+  border-radius: 12px;
+  overflow: hidden;
+}
+
+.s1-stat {
+  background: rgba(255,255,255,0.03);
+  padding: 24px 20px;
+  text-align: center;
+  transition: background 0.2s;
+}
+
+.s1-stat:hover { background: rgba(255,255,255,0.06); }
+
+.s1-stat-num {
+  font-family: 'DM Serif Display', serif;
+  font-size: 26px;
+  color: var(--ltgreen);
+  margin-bottom: 6px;
+}
+
+.s1-stat-label {
+  font-size: 10px;
+  color: var(--gray);
+  line-height: 1.4;
+  font-weight: 400;
+}
+
+.s1-contact {
+  font-size: 11px;
+  color: var(--midgray);
+  text-align: center;
+  letter-spacing: 0.3px;
+}
+
+/* ═══════════════════════════════════════════════════════════════════════════
+   SLIDE 2 — THE OPPORTUNITY
+═══════════════════════════════════════════════════════════════════════════ */
+#s2 { background: var(--offwht); color: var(--navy); }
+#s2 .logo-text .digi { color: var(--navy); }
+#s2 .logo-text .lend { color: var(--navy); }
+#s2 .confidential { color: #aaa; }
+
+.s2-body {
+  padding: 80px 64px 100px;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.s2-title {
+  font-family: 'DM Serif Display', serif;
+  font-size: clamp(32px, 3.5vw, 46px);
+  color: var(--navy);
+  margin-bottom: 8px;
+}
+
+.s2-sub {
+  font-size: 14px;
+  color: var(--midgray);
+  margin-bottom: 36px;
+  font-weight: 400;
+}
+
+.s2-cards {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+  margin-bottom: 28px;
+  flex: 1;
+}
+
+.s2-card {
+  border-radius: 16px;
+  padding: 28px;
+  display: flex;
+  flex-direction: column;
+  border: 1px solid transparent;
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.s2-card:hover { transform: translateY(-3px); box-shadow: 0 12px 40px rgba(0,0,0,0.1); }
+
+.s2-card.pain { background: #FEF2F2; border-color: #FECACA; }
+.s2-card.market { background: #EFF8F4; border-color: #A7F3D0; }
+.s2-card.gap { background: #EEF5FB; border-color: #BAD8F0; }
+
+.s2-card-tag {
+  display: inline-block;
+  font-size: 9px;
+  font-weight: 700;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  padding: 4px 10px;
+  border-radius: 20px;
+  margin-bottom: 16px;
+  width: fit-content;
+}
+
+.pain .s2-card-tag { background: #FEE2E2; color: #991B1B; }
+.market .s2-card-tag { background: #D1FAE5; color: #065F46; }
+.gap .s2-card-tag { background: #DBEAFE; color: #1E40AF; }
+
+.s2-card-title {
+  font-family: 'DM Serif Display', serif;
+  font-size: 22px;
+  margin-bottom: 12px;
+}
+
+.pain .s2-card-title { color: #991B1B; }
+.market .s2-card-title { color: var(--green); }
+.gap .s2-card-title { color: var(--ocean); }
+
+.s2-card-body {
+  font-size: 13px;
+  line-height: 1.65;
+  color: #374151;
+  flex: 1;
+}
+
+.s2-stats {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 12px;
+}
+
+.s2-stat {
+  background: var(--navy);
+  border-radius: 12px;
+  padding: 18px 16px;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.s2-stat::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 3px;
+}
+
+.s2-stat:nth-child(1)::before { background: var(--ltgreen); }
+.s2-stat:nth-child(2)::before { background: var(--ocean); }
+.s2-stat:nth-child(3)::before { background: #EF4444; }
+.s2-stat:nth-child(4)::before { background: var(--teal); }
+
+.s2-stat-num {
+  font-family: 'DM Serif Display', serif;
+  font-size: 26px;
+  color: var(--white);
+  margin-bottom: 4px;
+}
+
+.s2-stat-label { font-size: 10px; color: var(--gray); }
+
+/* ═══════════════════════════════════════════════════════════════════════════
+   SLIDE 3 — PRODUCTS
+═══════════════════════════════════════════════════════════════════════════ */
+#s3 { background: #1C2030; }
+
+.s3-body {
+  padding: 80px 64px 100px;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.s3-header { margin-bottom: 32px; }
+
+.s3-title {
+  font-family: 'DM Serif Display', serif;
+  font-size: clamp(30px, 3.5vw, 44px);
+  color: var(--white);
+  margin-bottom: 8px;
+}
+
+.s3-sub { font-size: 13px; color: var(--gray); }
+
+.s3-products {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+  flex: 1;
+}
+
+.s3-product {
+  border-radius: 20px;
+  padding: 32px;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  overflow: hidden;
+}
+
+.s3-product.invest {
+  background: linear-gradient(135deg, var(--green) 0%, #0F5030 100%);
+  border: 1px solid rgba(74,184,122,0.2);
+}
+
+.s3-product.ulu {
+  background: linear-gradient(135deg, var(--ocean) 0%, #063850 100%);
+  border: 1px solid rgba(59,170,208,0.2);
+}
+
+.s3-product::before {
+  content: '';
+  position: absolute;
+  bottom: -60px; right: -60px;
+  width: 200px; height: 200px;
+  border-radius: 50%;
+  border: 30px solid rgba(255,255,255,0.04);
+  pointer-events: none;
+}
+
+.s3-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 9px;
+  font-weight: 700;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  padding: 5px 12px;
+  border-radius: 20px;
+  margin-bottom: 20px;
+  width: fit-content;
+}
+
+.invest .s3-badge { background: rgba(74,184,122,0.2); color: var(--ltgreen); border: 1px solid rgba(74,184,122,0.3); }
+.ulu .s3-badge { background: rgba(240,180,0,0.15); color: #FBB040; border: 1px solid rgba(240,180,0,0.3); }
+
+.s3-product-name {
+  font-family: 'DM Serif Display', serif;
+  font-size: 30px;
+  color: var(--white);
+  margin-bottom: 4px;
+}
+
+.s3-product-sub {
+  font-size: 12px;
+  font-style: italic;
+  margin-bottom: 20px;
+}
+
+.invest .s3-product-sub { color: rgba(74,184,122,0.8); }
+.ulu .s3-product-sub { color: rgba(59,170,208,0.8); }
+
+.s3-divider {
+  height: 1px;
+  background: rgba(255,255,255,0.12);
+  margin-bottom: 18px;
+}
+
+.s3-points { flex: 1; }
+
+.s3-point {
+  display: flex;
+  gap: 10px;
+  align-items: flex-start;
+  margin-bottom: 10px;
+  font-size: 12.5px;
+  line-height: 1.5;
+}
+
+.s3-point::before {
+  content: '';
+  width: 5px; height: 5px;
+  border-radius: 50%;
+  flex-shrink: 0;
+  margin-top: 6px;
+}
+
+.invest .s3-point { color: rgba(255,255,255,0.8); }
+.invest .s3-point::before { background: var(--ltgreen); }
+.ulu .s3-point { color: rgba(255,255,255,0.8); }
+.ulu .s3-point::before { background: var(--ltteal); }
+
+.s3-bottom {
+  margin-top: 20px;
+  padding: 14px 20px;
+  border-radius: 10px;
+  text-align: center;
+  font-size: 12px;
+  font-weight: 600;
+}
+
+.invest .s3-bottom { background: rgba(255,255,255,0.1); color: var(--ltgreen); }
+.ulu .s3-bottom { background: rgba(255,255,255,0.1); color: var(--ltteal); }
+
+/* ═══════════════════════════════════════════════════════════════════════════
+   SLIDE 4 — TRACTION & PARTNERS
+═══════════════════════════════════════════════════════════════════════════ */
+#s4 { background: var(--offwht); color: var(--navy); }
+#s4 .logo-text .digi { color: var(--navy); }
+#s4 .logo-text .lend { color: var(--navy); }
+#s4 .confidential { color: #aaa; }
+#s4 .slide-label { color: var(--ocean); }
+
+.s4-body {
+  padding: 80px 64px 100px;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.s4-title {
+  font-family: 'DM Serif Display', serif;
+  font-size: clamp(28px, 3vw, 40px);
+  color: var(--navy);
+  margin-bottom: 8px;
+}
+
+.s4-sub {
+  font-size: 13px;
+  color: var(--midgray);
+  margin-bottom: 32px;
+}
+
+.s4-stats {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+  margin-bottom: 32px;
+}
+
+.s4-stat {
+  background: var(--navy);
+  border-radius: 16px;
+  padding: 28px 24px;
+  position: relative;
+  overflow: hidden;
+  transition: transform 0.2s;
+}
+
+.s4-stat:hover { transform: translateY(-2px); }
+
+.s4-stat::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 4px;
+  border-radius: 16px 16px 0 0;
+}
+
+.s4-stat:nth-child(1)::before { background: linear-gradient(90deg, var(--green), var(--ltgreen)); }
+.s4-stat:nth-child(2)::before { background: linear-gradient(90deg, var(--ocean), var(--ltteal)); }
+.s4-stat:nth-child(3)::before { background: linear-gradient(90deg, var(--teal), #40C0E0); }
+
+.s4-stat-num {
+  font-family: 'DM Serif Display', serif;
+  font-size: 36px;
+  color: var(--ltgreen);
+  margin-bottom: 2px;
+}
+
+.s4-stat-sub { font-size: 11px; color: var(--ltteal); margin-bottom: 6px; font-weight: 500; }
+.s4-stat-label { font-size: 11px; color: var(--gray); line-height: 1.4; }
+
+.s4-partners-title {
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  color: var(--midgray);
+  margin-bottom: 16px;
+}
+
+.s4-partners {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 12px;
+}
+
+.s4-partner {
+  background: var(--white);
+  border-radius: 12px;
+  padding: 16px 18px;
+  border-left: 4px solid;
+  transition: transform 0.2s, box-shadow 0.2s;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+}
+
+.s4-partner:hover { transform: translateX(3px); box-shadow: 0 4px 16px rgba(0,0,0,0.1); }
+
+.s4-partner:nth-child(1) { border-color: var(--green); }
+.s4-partner:nth-child(2) { border-color: var(--ocean); }
+.s4-partner:nth-child(3) { border-color: var(--teal); }
+.s4-partner:nth-child(4) { border-color: var(--ltgreen); }
+.s4-partner:nth-child(5) { border-color: var(--ltteal); }
+.s4-partner:nth-child(6) { border-color: var(--ocean); }
+
+.s4-partner-name { font-size: 13px; font-weight: 700; color: var(--navy); margin-bottom: 3px; }
+.s4-partner-role { font-size: 10.5px; color: var(--midgray); }
+
+/* ═══════════════════════════════════════════════════════════════════════════
+   SLIDE 5 — TEAM
+═══════════════════════════════════════════════════════════════════════════ */
+#s5 { background: var(--navy); }
+
+.s5-body {
+  padding: 80px 64px 100px;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.s5-title {
+  font-family: 'DM Serif Display', serif;
+  font-size: clamp(28px, 3vw, 40px);
+  color: var(--white);
+  margin-bottom: 6px;
+}
+
+.s5-sub { font-size: 13px; color: var(--gray); margin-bottom: 32px; }
+
+.s5-team {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  flex: 1;
+}
+
+.s5-member {
+  display: grid;
+  grid-template-columns: 220px 1fr;
+  gap: 32px;
+  padding: 22px 0;
+  border-bottom: 1px solid rgba(255,255,255,0.07);
+  align-items: start;
+  transition: background 0.2s;
+}
+
+.s5-member:last-child { border-bottom: none; }
+
+.s5-member-left { }
+
+.s5-member-name {
+  font-family: 'DM Serif Display', serif;
+  font-size: 17px;
+  color: var(--white);
+  margin-bottom: 4px;
+}
+
+.s5-member-role {
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+}
+
+.s5-member:nth-child(1) .s5-member-role { color: var(--ltgreen); }
+.s5-member:nth-child(2) .s5-member-role { color: var(--ltteal); }
+.s5-member:nth-child(3) .s5-member-role { color: var(--ltteal); }
+.s5-member:nth-child(4) .s5-member-role { color: var(--ltgreen); }
+
+.s5-member-accent {
+  width: 3px; height: 40px;
+  border-radius: 2px;
+  display: inline-block;
+  margin-bottom: 8px;
+}
+
+.s5-member:nth-child(1) .s5-member-accent { background: linear-gradient(180deg, var(--green), var(--ltgreen)); }
+.s5-member:nth-child(2) .s5-member-accent { background: linear-gradient(180deg, var(--ocean), var(--ltteal)); }
+.s5-member:nth-child(3) .s5-member-accent { background: linear-gradient(180deg, var(--teal), var(--ltteal)); }
+.s5-member:nth-child(4) .s5-member-accent { background: linear-gradient(180deg, var(--green), var(--ocean)); }
+
+.s5-member-creds {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  padding-top: 6px;
+}
+
+.s5-cred {
+  font-size: 12px;
+  color: var(--gray);
+  line-height: 1.5;
+  display: flex;
+  gap: 8px;
+  align-items: flex-start;
+}
+
+.s5-cred::before {
+  content: '—';
+  color: rgba(255,255,255,0.2);
+  flex-shrink: 0;
+  margin-top: 0;
+}
+
+/* ═══════════════════════════════════════════════════════════════════════════
+   SLIDE 6 — THE ASK
+═══════════════════════════════════════════════════════════════════════════ */
+#s6 { background: var(--navy); }
+
+.s6-body {
+  padding: 80px 64px 100px;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.s6-top { margin-bottom: 32px; }
+
+.s6-label {
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  color: var(--ltgreen);
+  margin-bottom: 10px;
+}
+
+.s6-amount {
+  font-family: 'DM Serif Display', serif;
+  font-size: clamp(44px, 6vw, 72px);
+  color: var(--white);
+  line-height: 1;
+  margin-bottom: 8px;
+}
+
+.s6-round-tag {
+  font-size: 14px;
+  color: var(--gray);
+  margin-bottom: 16px;
+}
+
+.s6-pitch {
+  font-size: 13px;
+  color: var(--midgray);
+  max-width: 600px;
+  line-height: 1.6;
+}
+
+.s6-divider {
+  height: 1px;
+  background: linear-gradient(90deg, var(--green), var(--ocean), var(--teal), transparent);
+  margin-bottom: 28px;
+}
+
+.s6-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 32px;
+  flex: 1;
+}
+
+.s6-funds-title, .s6-miles-title {
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: var(--ltteal);
+  margin-bottom: 18px;
+}
+
+.s6-fund {
+  display: flex;
+  gap: 16px;
+  align-items: flex-start;
+  margin-bottom: 16px;
+}
+
+.s6-fund-pct {
+  width: 52px; height: 52px;
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: 'DM Serif Display', serif;
+  font-size: 18px;
+  color: var(--white);
+  flex-shrink: 0;
+}
+
+.s6-fund:nth-child(1) .s6-fund-pct { background: linear-gradient(135deg, var(--green), #0F5030); }
+.s6-fund:nth-child(2) .s6-fund-pct { background: linear-gradient(135deg, var(--ocean), #063A58); }
+.s6-fund:nth-child(3) .s6-fund-pct { background: linear-gradient(135deg, var(--teal), #004060); }
+.s6-fund:nth-child(4) .s6-fund-pct { background: linear-gradient(135deg, var(--ltgreen), var(--ocean)); }
+
+.s6-fund-info {}
+.s6-fund-usd { font-size: 16px; font-weight: 600; color: var(--white); margin-bottom: 2px; }
+.s6-fund-title { font-size: 11px; font-weight: 600; color: var(--ltteal); margin-bottom: 3px; }
+.s6-fund-desc { font-size: 11px; color: var(--gray); line-height: 1.4; }
+
+.s6-milestone {
+  display: flex;
+  gap: 14px;
+  align-items: flex-start;
+  margin-bottom: 14px;
+}
+
+.s6-mile-dot {
+  width: 8px; height: 8px;
+  border-radius: 50%;
+  flex-shrink: 0;
+  margin-top: 5px;
+}
+
+.s6-milestone:nth-child(1) .s6-mile-dot { background: var(--ltgreen); }
+.s6-milestone:nth-child(2) .s6-mile-dot { background: var(--ltteal); }
+.s6-milestone:nth-child(3) .s6-mile-dot { background: var(--ocean); }
+.s6-milestone:nth-child(4) .s6-mile-dot { background: var(--teal); }
+.s6-milestone:nth-child(5) .s6-mile-dot { background: var(--ltgreen); }
+
+.s6-mile-text { font-size: 13px; color: var(--gray); line-height: 1.5; }
+
+/* Footer CTA */
+.s6-footer {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  border-radius: 14px;
+  overflow: hidden;
+  margin-top: 20px;
+}
+
+.s6-footer-item {
+  padding: 16px 20px;
+  text-align: center;
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--white);
+}
+
+.s6-footer-item:nth-child(1) { background: var(--green); }
+.s6-footer-item:nth-child(2) { background: var(--ocean); }
+.s6-footer-item:nth-child(3) { background: var(--teal); }
+
+/* ── KEYBOARD HINT ────────────────────────────────────────────────────────── */
+.kbd-hint {
+  position: fixed;
+  top: 28px;
+  right: 40px;
+  font-size: 10px;
+  color: rgba(255,255,255,0.25);
+  letter-spacing: 0.5px;
+  z-index: 100;
+}
+
+/* ── ANIMATIONS ───────────────────────────────────────────────────────────── */
+.slide.active .anim { animation: fadeUp 0.5s ease both; }
+.slide.active .anim:nth-child(1) { animation-delay: 0.05s; }
+.slide.active .anim:nth-child(2) { animation-delay: 0.12s; }
+.slide.active .anim:nth-child(3) { animation-delay: 0.18s; }
+.slide.active .anim:nth-child(4) { animation-delay: 0.24s; }
+.slide.active .anim:nth-child(5) { animation-delay: 0.30s; }
+.slide.active .anim:nth-child(6) { animation-delay: 0.36s; }
+
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(16px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+</style>
+</head>
+<body>
+
+
+
+<!-- ══════════════════════════════════════════════════════════════════════════
+     SLIDE 1 — COVER
+══════════════════════════════════════════════════════════════════════════ -->
+<div class="deck">
+<div class="slide active" id="s1">
+  <div class="color-bar"></div>
+  <div class="s1-layout">
+    <div class="s1-left">
+      <div class="s1-divider"></div>
+      <div class="logo-wrap" style="margin-bottom:0">
+        <img src="lgs1.png" class="logo-img" alt="DigiLend">
+        <div class="logo-text"><span class="digi">Digi</span><span class="lend">Lend</span></div>
+      </div>
+      <div>
+        <div class="s1-tag">Investor Teaser · 2026</div>
+        <div class="s1-company">DigiLend<br>Financial<br>Technology</div>
+        <div class="s1-tagline">Vietnam's Pioneering Secured P2P Lending & Earned Wage Access Platform</div>
+      </div>
+      <div class="s1-meta">Founded Sep 2025 &nbsp;·&nbsp; Hanoi, Vietnam &nbsp;·&nbsp; Seed Stage</div>
+    </div>
+
+    <div class="s1-right">
+      <div style="position:absolute;top:28px;right:48px;font-size:9px;font-weight:600;letter-spacing:2px;text-transform:uppercase;color:rgba(255,255,255,0.25);">STRICTLY CONFIDENTIAL</div>
+
+      <div style="margin-top:60px">
+        <div class="s1-raising-label">Seeking</div>
+        <div class="s1-amount">$5,000,000</div>
+        <div class="s1-round">USD &nbsp;·&nbsp; Seed Round</div>
+        <div class="s1-divline"></div>
+
+        <div class="s1-stats">
+          <div class="s1-stat">
+            <div class="s1-stat-num">~$4M</div>
+            <div class="s1-stat-label">Loan Volume<br>Facilitated</div>
+          </div>
+          <div class="s1-stat">
+            <div class="s1-stat-num">7 Mo.</div>
+            <div class="s1-stat-label">Since<br>Founding</div>
+          </div>
+          <div class="s1-stat">
+            <div class="s1-stat-num">2</div>
+            <div class="s1-stat-label">Products<br>Invest & uLu</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="s1-contact">contact@digilend.vn &nbsp;·&nbsp; www.digilend.vn &nbsp;·&nbsp; 1900.955.556</div>
+    </div>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════════════════════════════════════════
+     SLIDE 2 — THE OPPORTUNITY
+══════════════════════════════════════════════════════════════════════════ -->
+<div class="slide" id="s2">
+  <div class="color-bar"></div>
+  <div class="logo-bar">
+    <div class="logo-wrap">
+      <img src="lgs1.png" class="logo-img" alt="DigiLend">
+      <div class="logo-text"><span class="digi">Digi</span><span class="lend">Lend</span></div>
+    </div>
+    <div class="slide-label">The Opportunity</div>
+    <div class="confidential">Strictly Confidential</div>
+  </div>
+
+  <div class="s2-body" style="padding-top:88px">
+    <div class="anim">
+      <div class="s2-title">A Market Hiding in Plain Sight</div>
+      <div class="s2-sub">Vietnam has 55 million workers. Most are paid monthly. Most cannot access their earnings between paydays.</div>
+    </div>
+
+    <div class="s2-cards anim">
+      <div class="s2-card pain">
+        <div class="s2-card-tag">The Pain</div>
+        <div class="s2-card-title">Financial Vulnerability</div>
+        <div class="s2-card-body">When emergencies arise between paydays, Vietnamese workers resort to black market lending applications charging <strong>20–30% per month</strong> in interest. This affects the majority of the workforce and represents an acute, systemic financial vulnerability.</div>
+      </div>
+      <div class="s2-card market">
+        <div class="s2-card-tag">The Market</div>
+        <div class="s2-card-title">Significant Opportunity</div>
+        <div class="s2-card-body">Vietnam's P2P lending market is projected to reach <strong>$4.1B USD by 2027</strong>. Earned Wage Access (EWA) is a <strong>$2.9B USD</strong> market across Southeast Asia, with Vietnam representing the fastest growing segment in the region.</div>
+      </div>
+      <div class="s2-card gap">
+        <div class="s2-card-tag">The Gap</div>
+        <div class="s2-card-title">First Mover Position</div>
+        <div class="s2-card-body">No existing operator in Vietnam combines a live, revenue-generating P2P lending platform with an Earned Wage Access product on a single infrastructure. <strong>DigiLend is the first to do so</strong>  and has already proven the model.</div>
+      </div>
+    </div>
+
+    <div class="s2-stats anim">
+      <div class="s2-stat">
+        <div class="s2-stat-num">55M+</div>
+        <div class="s2-stat-label">Vietnamese workers</div>
+      </div>
+      <div class="s2-stat">
+        <div class="s2-stat-num">$4.1B</div>
+        <div class="s2-stat-label">P2P market by 2027</div>
+      </div>
+      <div class="s2-stat">
+        <div class="s2-stat-num">20–30%</div>
+        <div class="s2-stat-label">Black market monthly rate</div>
+      </div>
+      <div class="s2-stat">
+        <div class="s2-stat-num">$0</div>
+        <div class="s2-stat-label">Employer cost for uLu pilot</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════════════════════════════════════════
+     SLIDE 3 — PRODUCTS
+══════════════════════════════════════════════════════════════════════════ -->
+<div class="slide" id="s3">
+  <div class="color-bar"></div>
+  <div class="logo-bar">
+    <div class="logo-wrap">
+      <img src="lgs1.png" class="logo-img" alt="DigiLend">
+      <div class="logo-text"><span class="digi">Digi</span><span class="lend">Lend</span></div>
+    </div>
+    <div class="slide-label">Our Products</div>
+    <div class="confidential">Strictly Confidential</div>
+  </div>
+
+  <div class="s3-body" style="padding-top:88px">
+    <div class="s3-header anim">
+      <div class="s3-title">Two Products. One Infrastructure.</div>
+      <div class="s3-sub">Built on the same secure, GPay powered rails creating a compounding data and distribution advantage no competitor can replicate.</div>
+    </div>
+
+    <div class="s3-products anim">
+      <div class="s3-product invest">
+        <div class="s3-badge">● Live Now</div>
+        <div class="s3-product-name">DigiLend Invest</div>
+        <div class="s3-product-sub">Secured Peer-to-Peer Lending Platform</div>
+        <div class="s3-divider"></div>
+        <div class="s3-points">
+          <div class="s3-point">Connects borrowers with verified investors via transparent P2P system</div>
+          <div class="s3-point">Collateral: listed securities, bonds, certificates of deposit</div>
+          <div class="s3-point">Investor returns up to 20% p.a. · Borrower rates from 8% p.a.</div>
+          <div class="s3-point">Flexible terms: 1, 3, 6, 9, 12 and up to 36 months</div>
+          <div class="s3-point">Minimum loan VND 50M · Fast 8-hour disbursement</div>
+          <div class="s3-point">Legal counsel: LNT & Partners · eKYC: VNPT SmartCA</div>
+        </div>
+        <div class="s3-bottom">~$4M USD loan volume facilitated · 7 months from founding</div>
+      </div>
+
+      <div class="s3-product ulu">
+        <div class="s3-badge">◐ Pilot Open · Q2 2026</div>
+        <div class="s3-product-name">DigiLend uLu</div>
+        <div class="s3-product-sub">Earned Wage Access (EWA) · Salary on Demand</div>
+        <div class="s3-divider"></div>
+        <div class="s3-points">
+          <div class="s3-point">Workers access wages earned from actual working days not credit</div>
+          <div class="s3-point">Not a loan. Not consumer credit. Earned Wage Access only.</div>
+          <div class="s3-point">Transparent tiered fee disclosed upfront before every transaction</div>
+          <div class="s3-point">Up to 70% of accrued net wages within company's approved window</div>
+          <div class="s3-point">Automatic deduction at next payroll zero HR manual work</div>
+          <div class="s3-point">B2B2C model · Free 3-month pilot for employer partners</div>
+        </div>
+        <div class="s3-bottom">Employer pilot sign-ups open now · Launching Q2 2026</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════════════════════════════════════════
+     SLIDE 4 — TRACTION & PARTNERS
+══════════════════════════════════════════════════════════════════════════ -->
+<div class="slide" id="s4">
+  <div class="color-bar"></div>
+  <div class="logo-bar">
+    <div class="logo-wrap">
+      <img src="lgs1.png" class="logo-img" alt="DigiLend">
+      <div class="logo-text"><span class="digi">Digi</span><span class="lend">Lend</span></div>
+    </div>
+    <div class="slide-label">Traction & Partners</div>
+    <div class="confidential">Strictly Confidential</div>
+  </div>
+
+  <div class="s4-body" style="padding-top:88px">
+    <div class="anim">
+      <div class="s4-title">Proven in the Market 8 Months from Founding</div>
+      <div class="s4-sub">DigiLend Invest launched in December 2025 and has established significant market presence with Tier 1 institutional partners.</div>
+    </div>
+
+    <div class="s4-stats anim">
+      <div class="s4-stat">
+        <div class="s4-stat-num">~$4M USD</div>
+        <div class="s4-stat-sub">100B+ VND</div>
+        <div class="s4-stat-label">Total loan volume facilitated since launch</div>
+      </div>
+      <div class="s4-stat">
+        <div class="s4-stat-num">8</div>
+        <div class="s4-stat-sub">Strategic Partners</div>
+        <div class="s4-stat-label">GPay, Viettel, VNPT SmartCA, LNT & Partners, and more</div>
+      </div>
+      <div class="s4-stat">
+        <div class="s4-stat-num">4</div>
+        <div class="s4-stat-sub">Expert Co-Founders</div>
+        <div class="s4-stat-label">Combined 80+ years in Vietnam banking & finance</div>
+      </div>
+    </div>
+
+    <div class="s4-partners-title anim">Strategic Partners</div>
+    <div class="s4-partners anim">
+      <div class="s4-partner">
+        <div class="s4-partner-name">GPay</div>
+        <div class="s4-partner-role">Banking Infrastructure Partner</div>
+      </div>
+      <div class="s4-partner">
+        <div class="s4-partner-name">Viettel</div>
+        <div class="s4-partner-role">Digital Identity & Connectivity</div>
+      </div>
+      <div class="s4-partner">
+        <div class="s4-partner-name">VNPT SmartCA</div>
+        <div class="s4-partner-role">Electronic KYC & Digital Signing</div>
+      </div>
+      <div class="s4-partner">
+        <div class="s4-partner-name">LNT & Partners</div>
+        <div class="s4-partner-role">Legal & Regulatory Counsel</div>
+      </div>
+      <div class="s4-partner">
+        <div class="s4-partner-name">Synodus</div>
+        <div class="s4-partner-role">Technology Development Partner</div>
+      </div>
+      <div class="s4-partner">
+        <div class="s4-partner-name">AAS · ViHAT</div>
+        <div class="s4-partner-role">Financial & Compliance Partners</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════════════════════════════════════════
+     SLIDE 5 — TEAM
+══════════════════════════════════════════════════════════════════════════ -->
+<div class="slide" id="s5">
+  <div class="color-bar"></div>
+  <div class="logo-bar">
+    <div class="logo-wrap">
+      <img src="lgs1.png" class="logo-img" alt="DigiLend">
+      <div class="logo-text"><span class="digi">Digi</span><span class="lend">Lend</span></div>
+    </div>
+    <div class="slide-label">The Team</div>
+    <div class="confidential">Strictly Confidential</div>
+  </div>
+
+  <div class="s5-body" style="padding-top:88px">
+    <div class="anim">
+      <div class="s5-title">Built from Inside Vietnam's Banking System</div>
+      <div class="s5-sub">Our founders bring over 80 combined years of banking, finance, and technology experience across Vietnam's most prestigious institutions.</div>
+    </div>
+
+    <div class="s5-team">
+      <div class="s5-member anim">
+        <div class="s5-member-left">
+          <div class="s5-member-accent"></div>
+          <div class="s5-member-name">Dr. Vu Trung Thanh</div>
+          <div class="s5-member-role">Founder, Chairman & General Director</div>
+        </div>
+        <div class="s5-member-creds">
+          <div class="s5-cred">Ph.D. Banking & Finance, National Economics University · MBA, University of Hull, UK</div>
+          <div class="s5-cred">21+ years in securities, banking, finance & investment — VietinBank & Vietcombank</div>
+          <div class="s5-cred">Former CEO, VietinBank Top Branch · Former Director, VietinBank Branch Network</div>
+        </div>
+      </div>
+
+      <div class="s5-member anim">
+        <div class="s5-member-left">
+          <div class="s5-member-accent"></div>
+          <div class="s5-member-name">Mr. Do Manh Tuan</div>
+          <div class="s5-member-role">Co-Founder & Board Member</div>
+        </div>
+        <div class="s5-member-creds">
+          <div class="s5-cred">M.Sc., Griggs University USA · Information Systems, Hanoi University of Science & Technology</div>
+          <div class="s5-cred">15+ years in technology and business administration</div>
+          <div class="s5-cred">Co-founder: Be Group, AICycle, Synodus, VTX · Chairman, Synodus Vietnam</div>
+        </div>
+      </div>
+
+      <div class="s5-member anim">
+        <div class="s5-member-left">
+          <div class="s5-member-accent"></div>
+          <div class="s5-member-name">Dr. Tran Minh Tuan</div>
+          <div class="s5-member-role">Co-Founder</div>
+        </div>
+        <div class="s5-member-creds">
+          <div class="s5-cred">Ph.D. Banking & Finance, National Economics University · M.Sc. University of Southampton, UK</div>
+          <div class="s5-cred">13 years in investment and securities markets</div>
+          <div class="s5-cred">Vice Chairman, Smart Invest Securities JSC</div>
+        </div>
+      </div>
+
+      <div class="s5-member anim">
+        <div class="s5-member-left">
+          <div class="s5-member-accent"></div>
+          <div class="s5-member-name">Ms. Tran Thi Yen</div>
+          <div class="s5-member-role">Co-Founder & Deputy General Director</div>
+        </div>
+        <div class="s5-member-creds">
+          <div class="s5-cred">MBA, National Economics University, Vietnam</div>
+          <div class="s5-cred">30 years in banking and finance · 14 years as Deputy Director, VietinBank</div>
+          <div class="s5-cred">4 years as Head of Internal Audit, VietinBank</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════════════════════════════════════════
+     SLIDE 6 — THE ASK
+══════════════════════════════════════════════════════════════════════════ -->
+<div class="slide" id="s6">
+  <div class="color-bar"></div>
+  <div class="logo-bar">
+    <div class="logo-wrap">
+      <img src="lgs1.png" class="logo-img" alt="DigiLend">
+      <div class="logo-text"><span class="digi">Digi</span><span class="lend">Lend</span></div>
+    </div>
+    <div class="slide-label">The Ask</div>
+    <div class="confidential">Strictly Confidential</div>
+  </div>
+
+  <div class="s6-body" style="padding-top:88px">
+    <div class="s6-top anim">
+      <div class="s6-label">Seed Round</div>
+      <div class="s6-amount">$5,000,000 USD</div>
+      <div class="s6-round-tag">Building Vietnam's leading digital financial infrastructure</div>
+    </div>
+
+    <div class="s6-divider anim"></div>
+
+    <div class="s6-grid">
+      <div>
+        <div class="s6-funds-title anim">Allocation of Proceeds</div>
+        <div class="anim">
+          <div class="s6-fund">
+            <div class="s6-fund-pct">40%</div>
+            <div class="s6-fund-info">
+              <div class="s6-fund-usd">$2,000,000</div>
+              <div class="s6-fund-title">Working Capital Float</div>
+              <div class="s6-fund-desc">EWA liquidity pool for uLu salary advance operations at scale</div>
+            </div>
+          </div>
+          <div class="s6-fund">
+            <div class="s6-fund-pct">25%</div>
+            <div class="s6-fund-info">
+              <div class="s6-fund-usd">$1,250,000</div>
+              <div class="s6-fund-title">Technology & Product</div>
+              <div class="s6-fund-desc">Platform scaling, mobile app, security infrastructure and API integrations</div>
+            </div>
+          </div>
+          <div class="s6-fund">
+            <div class="s6-fund-pct">20%</div>
+            <div class="s6-fund-info">
+              <div class="s6-fund-usd">$1,000,000</div>
+              <div class="s6-fund-title">Team Expansion</div>
+              <div class="s6-fund-desc">CTO, Head of Risk, Business Development, Customer Success</div>
+            </div>
+          </div>
+          <div class="s6-fund">
+            <div class="s6-fund-pct">15%</div>
+            <div class="s6-fund-info">
+              <div class="s6-fund-usd">$750,000</div>
+              <div class="s6-fund-title">Compliance & GTM</div>
+              <div class="s6-fund-desc">Regulatory compliance, legal advisory, marketing and expansion</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div>
+        <div class="s6-miles-title anim">12-Month Milestones</div>
+        <div class="anim">
+          <div class="s6-milestone">
+            <div class="s6-mile-dot"></div>
+            <div class="s6-mile-text">Scale DigiLend Invest to <strong style="color:#fff">$25M+ USD</strong> total loan volume</div>
+          </div>
+          <div class="s6-milestone">
+            <div class="s6-mile-dot"></div>
+            <div class="s6-mile-text"><strong style="color:#fff">10+ employer pilot partners</strong> for uLu — Hanoi launch</div>
+          </div>
+          <div class="s6-milestone">
+            <div class="s6-mile-dot"></div>
+            <div class="s6-mile-text"><strong style="color:#fff">10,000+ active employee</strong> EWA users across platform</div>
+          </div>
+          <div class="s6-milestone">
+            <div class="s6-mile-dot"></div>
+            <div class="s6-mile-text">Series A preparation — <strong style="color:#fff">$15–20M USD</strong> target</div>
+          </div>
+          <div class="s6-milestone">
+            <div class="s6-mile-dot"></div>
+            <div class="s6-mile-text">Geographic expansion — <strong style="color:#fff">Ho Chi Minh City, Q4 2026</strong></div>
+          </div>
+        </div>
+
+        <div class="s6-footer anim" style="margin-top:24px">
+          <div class="s6-footer-item">contact@digilend.vn</div>
+          <div class="s6-footer-item">www.digilend.vn</div>
+          <div class="s6-footer-item">linkedin.com/in/vutrungthanh711</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+</div><!-- end deck -->
+
+<!-- NAV -->
+<div class="nav">
+  <button class="nav-btn" onclick="prevSlide()">←</button>
+  <button class="nav-dot active" onclick="goTo(0)"></button>
+  <button class="nav-dot" onclick="goTo(1)"></button>
+  <button class="nav-dot" onclick="goTo(2)"></button>
+  <button class="nav-dot" onclick="goTo(3)"></button>
+  <button class="nav-dot" onclick="goTo(4)"></button>
+  <button class="nav-dot" onclick="goTo(5)"></button>
+  <button class="nav-btn" onclick="nextSlide()">→</button>
+  <div class="slide-count" id="slideCount">1 / 6</div>
+</div>
+
+<script>
+const slides = document.querySelectorAll('.slide');
+const dots = document.querySelectorAll('.nav-dot');
+let current = 0;
+
+function goTo(n) {
+  slides[current].classList.remove('active');
+  slides[current].classList.add('exit');
+  setTimeout(() => slides[current].classList.remove('exit'), 600);
+
+  dots[current].classList.remove('active');
+  current = n;
+  slides[current].classList.add('active');
+  dots[current].classList.add('active');
+  document.getElementById('slideCount').textContent = `${current + 1} / ${slides.length}`;
+}
+
+function nextSlide() { if (current < slides.length - 1) goTo(current + 1); }
+function prevSlide() { if (current > 0) goTo(current - 1); }
+
+document.addEventListener('keydown', e => {
+  if (e.key === 'ArrowRight' || e.key === 'ArrowDown') nextSlide();
+  if (e.key === 'ArrowLeft' || e.key === 'ArrowUp') prevSlide();
+});
+
+// Touch/swipe support
+let tx = 0;
+document.addEventListener('touchstart', e => tx = e.touches[0].clientX);
+document.addEventListener('touchend', e => {
+  const diff = tx - e.changedTouches[0].clientX;
+  if (Math.abs(diff) > 50) diff > 0 ? nextSlide() : prevSlide();
+});
+</script>
+</body>
+</html>
